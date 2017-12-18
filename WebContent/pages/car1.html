@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5shiv.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css"
+	href="../static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="../static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css"
+	href="../lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css"
+	href="../static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css"
+	href="../static/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title></title>
+</head>
+<body>
+	<nav class="breadcrumb">
+		<i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>
+		拼车管理 <span class="c-gray en">&gt;</span> 全部拼车 <a
+			class="btn btn-success radius r"
+			style="line-height: 1.6em; margin-top: 3px"
+			href="javascript:location.replace(location.href);" title="刷新"><i
+			class="Hui-iconfont">&#xe68f;</i></a>
+	</nav>
+	<div class="page-container">
+		<div class="text-c">
+			<input type="text" name="" id="" placeholder="始发地，目的地"
+				style="width: 250px" class="input-text">
+			<button name="" id="" class="btn btn-success" type="submit">
+				<i class="Hui-iconfont">&#xe665;</i> 搜索
+			</button>
+		</div>
+		
+		<div class="mt-20">
+			<table id="example" class="table table-border table-bordered table-hover table-bg table-sort">
+			<thead>
+				<tr class="text-c">
+					<th width="80">ID</th>
+					<th>姓名</th>
+					<th>电话</th>
+					<th>始发地</th>
+					<th>目的地</th>
+					<th>发车时间</th>
+					<th>状态</th>
+				</tr>
+			</thead> 
+            <tbody>  
+            </tbody>  
+        </TABLE>  
+		</div>
+	</div>
+	<!--_footer 作为公共模版分离出去-->
+	<script type="text/javascript" src="../lib/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../lib/layer/2.4/layer.js"></script>
+	<script type="text/javascript" src="../static/h-ui/js/H-ui.min.js"></script>
+	<script type="text/javascript"
+		src="../static/h-ui.admin/js/H-ui.admin.js"></script>
+	<!--/_footer 作为公共模版分离出去-->
+
+	<!--请在下方写此页面业务相关的脚本-->
+	<script type="text/javascript"
+		src="../lib/My97DatePicker/4.8/WdatePicker.js"></script>
+	<script type="text/javascript"
+		src="../lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="../lib/laypage/1.2/laypage.js"></script>
+	<script type="text/javascript">
+	$('#example').dataTable({
+	    "oLanguage": {    //语言设置
+	        "sProcessing": "正在加载中......",
+	        "sLengthMenu": "每页显示 _MENU_ 条记录",
+	        "sZeroRecords": "对不起，查询不到相关数据！",
+	        "sEmptyTable": "表中无数据存在！",
+	        "sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录",
+	        "sInfoFiltered": "数据表中共为 _MAX_ 条记录",
+	        "sSearch": "搜索",
+	        "oPaginate": {
+	            "sFirst": "首页",
+	            "sPrevious": "上一页",
+	            "sNext": "下一页",
+	            "sLast": "末页"
+	        }
+	    },
+	    "bAutoWidth": false,    //自动适应宽度
+	    "bFilter": false, //查询
+	    "bSort": false, //排序
+	    "bInfo": true, //页脚信息
+	    "bLengthChange": false, //改变每页显示数据数量
+	    "bServerSide": true, //服务器数据分页
+	    "sServerMethod":'post',
+	    "sAjaxSource": 'GetCarList',
+	    "bProcessing": true, //当datatable获取数据时候是否显示正在处理提示信息。 
+	    "bPaginate": true, //显示分页器
+	    "iDisplayLength":10,
+	    "fnServerParams": function ( aoData ) {
+            aoData.push( {name: "gender", value: 1 } );
+        },
+	    "aoColumns": [
+			{"data" : "id"},
+			{"data" : "name"},  
+			{"data" : "phone"},  
+			{"data" : "departure"},  
+			{"data" : "destination"},  
+			{"data" : "time"} ,  
+			{"data" : "status"}
+	    ]
+	});
+</script>
+</body>
+</html>
